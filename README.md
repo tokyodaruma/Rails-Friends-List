@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I am learning how to create a Rails application to prep for the upcoming 2022 Le Wagon Web Development Bootcamp.
 
-Things you may want to cover:
+This is a friends list made in Rails following the MVC and CRUD models.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby v3.0.3 | Rails v7.0.1
