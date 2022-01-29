@@ -1,15 +1,14 @@
-<p style="color: green"><%= notice %></p>
-
-<table class="table">
-
-  <thread>
+<table class="table table-bordered table-hover table-responsize text-center">
+  <thead class="table-dark">
     <tr>
       <th>Name</th>
       <th>Email</th>
       <th>Phone</th>
       <th>Github</th>
+      <th></th>
+      <th></th>
     </tr>
-  </thread>
+  </tread>
 
   <tbody>
     <% @friends.each do |friend| %>
@@ -21,6 +20,12 @@
         <td><%= friend.email %></td>
         <td><%= friend.phone %></td>
         <td><%= friend.github %></td>
+        <td>
+          <%= link_to "Edit", edit_friend_path(friend) %>
+        </td>
+        <td>
+          <%= button_to "Delete", friend, method: :delete %>
+        </td>
 
 
       </tr>
@@ -28,4 +33,4 @@
   </tbody>
 </table>
 
-<%= link_to "New friend", new_friend_path %>
+<%= link_to "New friend", new_friend_path, class: "btn btn-secondary" %>
