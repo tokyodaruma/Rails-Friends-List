@@ -1,40 +1,52 @@
-<table class="table table-bordered table-hover table-responsize text-center">
-  <thead class="table-dark">
-    <tr>
-      <th>Created by</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Github</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </tread>
+<% if user_signed_in? %>
 
-  <tbody>
-    <% @friends.each do |friend| %>
-      <% if friend.user == current_user %>
-        <tr>
+  <table class="table table-bordered table-hover table-responsize text-center">
+    <thead class="table-dark">
+      <tr>
+        <th>Created by</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Github</th>
+        <th></th>
+      </tr>
+    </tread>
 
-          <td><%= friend.user_id %></td>
-          <td>
-            <%= link_to friend.first_name + ' ' + friend.last_name, friend %>
-          </td>
-          <td><%= friend.email %></td>
-          <td><%= friend.phone %></td>
-          <td><%= friend.github %></td>
-          <td>
-            <%= link_to "Edit", edit_friend_path(friend) %>
-          </td>
-          <td>
-            <%= button_to "Delete", friend, method: :delete %>
-          </td>
+    <tbody>
+      <% @friends.each do |friend| %>
+        <% if friend.user == current_user %>
+          <tr>
+
+            <td><%= friend.user_id %></td>
+            <td>
+              <%= link_to friend.first_name + ' ' + friend.last_name, friend %>
+            </td>
+            <td><%= friend.email %></td>
+            <td><%= friend.phone %></td>
+            <td><%= friend.github %></td>
+            <td>
+              <%= button_to "Delete", friend, method: :delete, class: "btn btn-outline-danger btn-sm" %>
+            </td>
 
 
-        </tr>
+          </tr>
+        <% end %>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
 <%= link_to "New friend", new_friend_path, class: "btn btn-secondary" %>
+
+<% else %>
+
+  <div class="card mb-3">
+    <img src="..." class="card-img-top" alt="">
+    <div class="card-body">
+      <h5 class="card-title">Let's Make Friends!</h5>
+      <p class="card-text">This is my first Rails app designed to incorporate MVC principles and CRUD methodology.</p>
+      <p class="card-text">Head over to the Sign Up section in the navigation bar to start. Enjoy making friends!</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+
+<% end %>
