@@ -62,13 +62,17 @@ class FriendsController < ApplicationController
 
   def correct_user
     @friend = current_user.friends.find_by(id: params[:id])
-    redirect_to friends_path, notice: "Not Authorized To Edit This Friend" if @friend.nil?
+    redirect_to friends_path, notice: "Invalid request." if @friend.nil?
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_friend
-      @friend = Friend.find(params[:id])
+      begin
+        @friend = Friend.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to friends_path, notice: "Invalid request."
+      end
     end
 
     # Only allow a list of trusted parameters through.
