@@ -3,7 +3,6 @@
   <table class="table table-bordered table-hover table-responsize text-center">
     <thead class="table-dark">
       <tr>
-        <th>Created by</th>
         <th>Name</th>
         <th>Email</th>
         <th>Phone</th>
@@ -17,7 +16,6 @@
         <% if friend.user == current_user %>
           <tr>
 
-            <td><%= friend.user_id %></td>
             <td>
               <%= link_to friend.first_name + ' ' + friend.last_name, friend %>
             </td>
